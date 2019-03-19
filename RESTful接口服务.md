@@ -1,6 +1,6 @@
 # 使用Javascript构建RESTful接口服务
 
-js有很多优秀的http服务框架,目前最受我个人喜爱的是[koa](https://koa.bootcss.com/).这个框架非常轻量,要正常使用几乎必须使用插件.先来一个[helloworld]()这个例子没有方法判断,没有路由,没有权限控制,什么都没有只是给出一个最最基础的http服务而已.
+js有很多优秀的http服务框架,目前最受我个人喜爱的是[koa](https://koa.bootcss.com/).这个框架非常轻量,要正常使用几乎必须使用插件.先来一个[helloworld](https://github.com/TutorialForJavascript/js-server/tree/master/code/RESTful%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/C0)这个例子没有方法判断,没有路由,没有权限控制,什么都没有只是给出一个最最基础的http服务而已.
 
 ```js
 import Koa from 'koa'
@@ -97,12 +97,11 @@ ctx也提供了几个特殊对象方便我们构造响应.
 
 ### 自己写个插件
 
-我们的第二个例子[C1]()就是一个自己写的插件,这个插件实现一个没什么用的功能--给所有的response的json体内加上`author:hsz`.
+我们的第二个例子[C1](https://github.com/TutorialForJavascript/js-server/tree/master/code/RESTful%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/C1)就是一个自己写的插件,这个插件实现一个没什么用的功能--给所有的response的json体内加上`author:hsz`.
 
 插件和业务逻辑都是使用`app.use()`来调用,但不太一样的是插件是一个包含`ctx`和`next`两个参数的协程函数,而`await next()`则是进入下一层的标志,在其上的是处理请求,在其下的是处理响应.
 
 这个就有点像python中使用`contextlib.contextmanager`写[上下文管理器](https://tutorialforpython.github.io/%E8%AF%AD%E6%B3%95%E7%AF%87/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/%E5%8D%95%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html#%E4%BD%BF%E7%94%A8contextmanager).
-
 
 ### 使用插件
 
@@ -118,10 +117,11 @@ ctx也提供了几个特殊对象方便我们构造响应.
 + [koa-body](https://github.com/dlau/koa-body)用于将body体解析为更易懂的形式,比如json这类
 + [koa-jwt](https://github.com/koajs/jwt)jwt认证
 + [koa-pino-logger](https://github.com/pinojs/koa-pino-logger)一个机遇pino的logger,默认的log形式为json更容易被elasticsearch解析
++ [koa2-cors](https://www.npmjs.com/package/koa2-cors)服务端解决跨域问题
 
 ## 一个RESTful的完整例子
 
-我们用例子[C2]来封装一个服务资源--Notification. 这个Notification包含如下字段:
+我们用例子[C2](https://github.com/TutorialForJavascript/js-server/tree/master/code/RESTful%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/C2)来封装一个服务资源--Notification. 这个Notification包含如下字段:
 
 ```json
 {
@@ -159,4 +159,3 @@ ctx也提供了几个特殊对象方便我们构造响应.
 + `config.js`管理配置文件和默认配置
 + `app.js`用于生成app实例
 + `pubsub.js`用于管理redis的发布订阅
-
