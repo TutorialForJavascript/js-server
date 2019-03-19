@@ -119,6 +119,10 @@ ctx也提供了几个特殊对象方便我们构造响应.
 + [koa-pino-logger](https://github.com/pinojs/koa-pino-logger)一个机遇pino的logger,默认的log形式为json更容易被elasticsearch解析
 + [koa2-cors](https://www.npmjs.com/package/koa2-cors)服务端解决跨域问题
 
+### 关于跨域
+
+关于跨域的问题我写在[前端部分](https://tutorialforjavascript.github.io/web%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF%E6%A6%82%E8%A7%88/%E5%89%8D%E7%AB%AF%E5%BA%94%E7%94%A8%E4%B8%8E%E9%80%9A%E4%BF%A1/ajax%E5%8F%8A%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF.html),有兴趣的可以看下.
+
 ## 一个RESTful的完整例子
 
 我们用例子[C2](https://github.com/TutorialForJavascript/js-server/tree/master/code/RESTful%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/C2)来封装一个服务资源--Notification. 这个Notification包含如下字段:
