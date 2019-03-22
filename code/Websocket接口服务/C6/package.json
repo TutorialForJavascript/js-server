@@ -25,6 +25,7 @@
     },
     "scripts": {
         "start": "./node_modules/.bin/babel-node es/index.js",
-        "test": "./node_modules/.bin/nyc --reporter=text ./node_modules/.bin/mocha --require babel-polyfill --require babel-register"
+        "test1": "./node_modules/.bin/babel-node test/index1.js",
+        "test2": "./node_modules/.bin/babel-node test/index2.js"
     }
 }

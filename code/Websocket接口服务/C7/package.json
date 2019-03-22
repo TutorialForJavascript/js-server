@@ -21,10 +21,11 @@
         ]
     },
     "dependencies": {
+        "faker": "^4.1.0",
         "ws": "^6.2.0"
     },
     "scripts": {
         "start": "./node_modules/.bin/babel-node es/index.js",
-        "test": "./node_modules/.bin/nyc --reporter=text ./node_modules/.bin/mocha --require babel-polyfill --require babel-register"
+        "test": "./node_modules/.bin/babel-node test/index.js"
     }
 }
