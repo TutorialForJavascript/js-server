@@ -264,7 +264,7 @@ ws.on('close', () => {
 
 ## 路径
 
-我们常见的websocket连接通常不会是一个光秃秃host,而是会根据http路径区分功能.这个当然可以[通过nginx来解决](),但如果我们希望直接一个服务解决那该如何操作呢?
+我们常见的websocket连接通常不会是一个光秃秃host,而是会根据http路径区分功能.这个当然可以[通过nginx来解决](http://blog.hszofficial.site/recommend/2019/03/20/%E7%8E%A9%E8%BD%ACNginx/),但如果我们希望直接一个服务解决那该如何操作呢?
 
 我们就需要结合http服务模块来做了.例子[C5](https://github.com/TutorialForJavascript/js-server/tree/master/code/Websocket%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/C5)
 
