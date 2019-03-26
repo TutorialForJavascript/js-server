@@ -1,0 +1,6 @@
+version: '3.6'
+services:
+  rest-helloworld:
+    image: hsz1273327/js-server:grpc_c0
+    ports:
+      - 5000:5000
