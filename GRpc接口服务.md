@@ -21,7 +21,7 @@ GRpc是一种跨语言的Rpc,它建立在`http2`上使用[protobuf](https://deve
 
 ## 请求-响应
 
-这个例子[C0]()我们来实现一个简单的服务--输入一个数,输出这个数的平方
+这个例子[C0](https://github.com/TutorialForJavascript/js-server/tree/master/code/GRpc%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/C0)我们来实现一个简单的服务--输入一个数,输出这个数的平方
 
 ### 创建一个`protobuf`文件
 
@@ -166,7 +166,7 @@ main()
 
 这种需求比较常见,有点类似,python中的range函数,它生成的是一个流而非一个数组,它会一次一条的按顺序将数据发送回请求的客户端.
 
-这个例子[C1]()实现了给出一个正整数,它会返回从0开始到它为止的每个整数的平方.
+这个例子[C1](https://github.com/TutorialForJavascript/js-server/tree/master/code/GRpc%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/C1)实现了给出一个正整数,它会返回从0开始到它为止的每个整数的平方.
 
 ### 修改`protobuf`文件
 
@@ -219,7 +219,7 @@ call.on("end",()=>{
 
 这种需求不是很多见,可能用的比较多的是收集一串数据后统一进行处理吧,流只是可以确保是同一个客户端发过来的而已.
 
-这个例子[C2]()实现了传过来一串数,之后返回他们的平方和
+这个例子[C2](https://github.com/TutorialForJavascript/js-server/tree/master/code/GRpc%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/C2)实现了传过来一串数,之后返回他们的平方和
 
 ### 修改`protobuf`文件
 
@@ -281,7 +281,7 @@ service SquareService {
 
 ### 请求流完成后返回流
 
-这个例子[C3]()实现了传过来一串数,之后以流的形式返回这组数每个的平方.
+这个例子[C3](https://github.com/TutorialForJavascript/js-server/tree/master/code/GRpc%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/C3)实现了传过来一串数,之后以流的形式返回这组数每个的平方.
 
 + 修改服务端
 
@@ -327,7 +327,7 @@ call.end()
 
 ### 请求的进行中就返回响应
 
-这个例子[C4]()实现了传过来一串数,每收到一个数就处理了进行返回.
+这个例子[C4](https://github.com/TutorialForJavascript/js-server/tree/master/code/GRpc%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/C4)实现了传过来一串数,每收到一个数就处理了进行返回.
 
 + 修改服务端
 
