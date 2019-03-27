@@ -20,6 +20,7 @@ const rpc_proto = grpc.loadPackageDefinition(PackageDefintion).squarerpc_service
 
 const SquareService = {
     square(call,callback){
+        console.log(`get message ${call.request.message}`)
         let result = call.request.message**2
         callback(null,{
             message: result
