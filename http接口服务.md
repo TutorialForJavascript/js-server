@@ -1,4 +1,4 @@
-# 使用Javascript构建RESTful接口服务
+# 使用Javascript构建http接口服务
 
 js有很多优秀的http服务框架,目前最受我个人喜爱的是[koa](https://koa.bootcss.com/).这个框架非常轻量,要正常使用几乎必须使用插件.先来一个[helloworld](https://github.com/TutorialForJavascript/js-server/tree/master/code/RESTful%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/C0)这个例子没有方法判断,没有路由,没有权限控制,什么都没有只是给出一个最最基础的http服务而已.
 
@@ -118,12 +118,13 @@ ctx也提供了几个特殊对象方便我们构造响应.
 + [koa-jwt](https://github.com/koajs/jwt)jwt认证
 + [koa-pino-logger](https://github.com/pinojs/koa-pino-logger)一个机遇pino的logger,默认的log形式为json更容易被elasticsearch解析
 + [koa2-cors](https://www.npmjs.com/package/koa2-cors)服务端解决跨域问题
++ [koa-sse-stream](https://github.com/yklykl530/koa-sse),一个用于构造sse的插件.
 
 ### 关于跨域
 
 关于跨域的问题我写在[前端部分](https://tutorialforjavascript.github.io/web%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF%E6%A6%82%E8%A7%88/%E5%89%8D%E7%AB%AF%E5%BA%94%E7%94%A8%E4%B8%8E%E9%80%9A%E4%BF%A1/ajax%E5%8F%8A%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF.html),有兴趣的可以看下.
 
-## 一个RESTful的完整例子
+## 一个完整例子
 
 我们用例子[C2](https://github.com/TutorialForJavascript/js-server/tree/master/code/RESTful%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/C2)来封装一个服务资源--Notification. 这个Notification包含如下字段:
 
@@ -133,22 +134,23 @@ ctx也提供了几个特殊对象方便我们构造响应.
     "creater_id":int,//创建者id
     "create_time":DATETIME,//创建时间
     "notify_time":DATETIME,//提醒时间
-    "notify_target":JSON,//要提醒的目标用户
+    "notify_uid":JSON,//要提醒的目标用户
     "message":string,//提醒内容
     "status":ENUM('Pendding', 'Canceled','Done','Error'),//状态
     "status_log":JSON//状态转化的log信息,其结构为`[{from:xxx,to:xxx,at:xxx,msg:xxx},...]`
 }
 ```
 
-同时会为每个创建了的Notification创建一个定时任务的promise,这个任务将会向一个redis发出一个发布订阅的发布请求.
+同时会为每个创建了的Notification创建一个定时任务的promise,这个任务将会向一个redis的目标用户uid为名的channel发出一个发布订阅的发布请求.
+而我们的`/stream/:uid`将会监听redis的uid对应的channel以推送提醒.
 
-虽然我们现在没有用户系统,但这不影响我们做这个服务,毕竟RESTful本来就是无状态的
 
+这个例子实际上是3个资源加一个sse推送流
 
-这个例子实际上是3个资源
 + main,也就是存放Notification和相关资源的容器
 + NotificationList,管理所有Notification实例的容器
 + Notification,管理单个Notification实例
++ stream,管理流数据的推送.
 
 这个例子中使用到了最常用的几个插件,实际上只是将数据库中的数据做了下封装.
 

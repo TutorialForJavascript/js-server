@@ -7,7 +7,7 @@
 
 + `npm run build`将源码编译到server文件夹
 + `npm start`启动服务
-+ `npm run test`测试接口
++ 打开浏览器,输入`localhost:5000/stream`后执行 `npm run test`测试restful的api接口.
 
 ## 注意
 
