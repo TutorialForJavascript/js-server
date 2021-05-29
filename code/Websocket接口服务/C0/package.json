@@ -21,7 +21,7 @@
         ]
     },
     "dependencies": {
-        "ws": "^6.2.0"
+        "ws": "^7.4.6"
     },
     "scripts": {
         "start": "./node_modules/.bin/babel-node es/index.js",
